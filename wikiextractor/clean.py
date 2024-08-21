@@ -19,7 +19,7 @@
 from wikiextractor.extract import Extractor, ignoreTag, resetIgnoredTags
 
 
-def clean_markup(markup, keep_links=False, ignore_headers=True):
+def clean_markup(markup, keep_links=False, ignore_headers=False):
     """
     Clean Wikimarkup to produce plaintext.
 
