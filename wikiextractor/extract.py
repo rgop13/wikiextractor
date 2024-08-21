@@ -186,7 +186,7 @@ listItem = {'*': '<li>%s</li>', '#': '<li>%s</<li>', ';': '<dt>%s</dt>',
             ':': '<dd>%s</dd>'}
 
 
-def compact(text, mark_headers=False):
+def compact(text, mark_headers=True):
     """Deal with headers, lists, empty sections, residuals of tables.
     :param text: convert to HTML
     """
@@ -943,7 +943,7 @@ class Extractor():
         self.recursion_exceeded_3_errs = 0  # parameter recursion
         self.template_title_errs = 0
 
-    def clean_text(self, text, mark_headers=False, expand_templates=True,
+    def clean_text(self, text, mark_headers=True, expand_templates=True,
                    html_safe=True):
         """
         :param mark_headers: True to distinguish headers from paragraphs
