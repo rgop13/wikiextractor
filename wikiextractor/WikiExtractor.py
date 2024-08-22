@@ -63,7 +63,7 @@ from io import StringIO
 from multiprocessing import Queue, get_context, cpu_count
 from timeit import default_timer
 
-from .extract import Extractor, ignoreTag, define_template, acceptedNamespaces
+from extract import Extractor, ignoreTag, define_template, acceptedNamespaces
 
 # ===========================================================================
 
@@ -190,7 +190,7 @@ tagRE = re.compile(r'(.*?)<(/?\w+)[^>]*>(?:([^<]*)(<.*?>)?)?')
 #                    1     2               3      4
 
 
-def load_templates(file, output_file=None):
+def load_templates(file, output_file=None, debug=True):
     """
     Load templates from :param file:.
     :param output_file: file where to save templates and modules.
@@ -257,6 +257,8 @@ def load_templates(file, output_file=None):
             articles += 1
             if articles % 100000 == 0:
                 logging.info("Preprocessed %d pages", articles)
+                if debug:
+                    break
     if output_file:
         output.close()
         logging.info("Saved %d templates to '%s'", templates, output_file)

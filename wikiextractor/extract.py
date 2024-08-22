@@ -216,7 +216,14 @@ def compact(text, mark_headers=True):
                 title += '.'
 
             if mark_headers:
-                title = "## " + title
+                if lev == 1:
+                    title = "#L1 " + title
+                elif lev == 2:
+                    title = "##L2 " + title
+                elif lev == 3:
+                    title = "###L3 " + title
+                else:
+                    title = "#### " + title
 
             headers[lev] = title
             # drop previous headers
@@ -976,7 +983,7 @@ class Extractor():
 
         if self.to_json:
             json_data = {
-		'id': self.id,
+		        'id': self.id,
                 'revid': self.revid,
                 'url': self.url,
                 'title': self.title,
